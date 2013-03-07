@@ -83,7 +83,7 @@ ul.menu li a:hover, ul.menu li.current a {
 }
 
 table.list {
-	border: 1px solid #ccc;
+	border: 1px solid;
 	border-radius: 10px;
 	width: 80%;
 	margin-top: 1em;
@@ -94,14 +94,15 @@ table.list th, table.list td {
 	padding: .3em;
 }
 
-table.list tr {
+/*table.list tr {
 	background: #cccccc
-}
+}*/
 
 table.list th {
-	color: wheat;
-	font-weight: bold;
+	/*color: wheat;
 	background: gray;
+	*/
+	font-weight: bold;
 }
 
 #search-box label, #search-box input, #search-box select {

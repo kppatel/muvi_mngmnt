@@ -5,7 +5,7 @@
 			<title><?php echo $template['title'] ?></title>
 			<meta name="description" content="">
 
-				<?php echo css('style') ?>
+				<?php echo css('style'), css('base'), css('skeleton'), css('layout') ?>
 				<?php echo js('jquery'), js('script') ?>
 
 				</head>
@@ -21,6 +21,7 @@
 											<li><?php echo anchor('directors/index', 'Directors'); ?></li>
 											<li><?php echo anchor('producers/index', 'Producers'); ?></li>
 											<li><?php echo anchor('categories/index', 'Categories'); ?></li>
+											<li><?php echo anchor('actors/index', 'Actors'); ?></li>
 										</ul>
 									</div>
 								</div>
@@ -33,7 +34,7 @@
 									<div class="cleared reset-box"></div>
 									<div class="art-header-inner">
 										<div class="art-logo">
-											<h1 class="art-logo-name"><a href="#">Movie Management</a></h1>
+											<h1 class="art-logo-name">Movie Management</h1>
 											<h2 class="art-logo-text"></h2>
 										</div>
 									</div>
@@ -64,7 +65,7 @@
 								<div class="art-footer">
 									<div class="art-footer-body">
 										<div class="art-footer-text"><p>
-												<a href="#">Movies</a> | <a href="#">Directors</a> | <a href="#">Producers</a> | <a href="#">Categories</a>
+												<?php echo anchor('movies/index', 'Movies'); ?> | <?php echo anchor('directors/index', 'Directors'); ?> | <?php echo anchor('producers/index', 'Producers'); ?> | <?php echo anchor('categories/index', 'Categories'); ?>
 											</p></div>
 									</div>
 								</div>

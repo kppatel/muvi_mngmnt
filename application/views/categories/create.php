@@ -1,22 +1,13 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<title></title>
-	</head>
-	<body>
-		<form action="" method="post">
-			<fieldset>
-			<legend>Create Category</legend>
-			<label for="name">Name</label>
-			<input id="name" name="name" type="text">
-			<?php echo form_error('name') ?>
-			<br>
+<form action="" method="post">
+	<fieldset>
+		<legend><h1>Create Category</h1></legend>
+		<label for="name">Name</label>
+		<input id="name" name="name" type="text">
+		<?php echo form_error('name') ?>
+		<br>
 
-			<input type="submit" value="Create">
-			<input type="reset">
-			<?php echo anchor('categories/index', 'Cancel') ?>
-			</fieldset>
-		</form>
-	</body>
-</html>
+		<input type="submit" value="Create">
+		<input type="reset">
+		<?php echo anchor('categories/index', 'Cancel') ?>
+	</fieldset>
+</form>

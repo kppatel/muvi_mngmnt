@@ -1,29 +1,39 @@
-<?php echo css('base'), css('skeleton'), css('layout') ?>
-<ul class="menu">
-	<li><?php echo anchor('movies/index', 'Movies'); ?></li>
-	<li><?php echo anchor('directors/index', 'Directors'); ?></li>
-	<li><?php echo anchor('producers/index', 'Producers'); ?></li>
-	<li><?php echo anchor('categories/index', 'Categories'); ?></li>
-</ul>
-<?php echo anchor('categories/create', 'Create'); ?>
-<h3>Categories</h3>
-		<?php if(!empty($data)): ?>
+<div class="container">
+	<h1>Categories</h1>
+	<?php echo anchor('categories/create', 'Create'); ?>
+	<?php if (!empty($data)): ?>
 		<table class="list">
 			<thead>
-				<th data-sort="string">Name</th>
-				<th colspan="2">Actions</th>
+			<th data-sort="string">Name</th>
+			<th colspan="2">Actions</th>
 			</thead>
 
 			<tbody>
 				<?php foreach ($data as $r): ?>
-				<tr>
-					<td><?php echo $r['name'] ?></td>
-					<td align="center"><?php echo anchor('categories/edit/' . $r['id'], 'Edit') ?></td>
-					<td align="center"><?php echo anchor('categories/delete/' . $r['id'], 'Delete') ?></td>
-				</tr>
+					<tr>
+						<td><?php echo $r['name'] ?></td>
+						<td align="center"><?php echo anchor('categories/edit/' . $r['id'], 'Edit') ?></td>
+						<td align="center"><?php echo anchor('categories/delete/' . $r['id'], 'Delete', array('class' => 'delete')) ?></td>
+					</tr>
 				<?php endforeach ?>
 			</tbody>
 		</table>
-		<?php else: ?>
+	<?php else: ?>
 		<p>No records found.</p>
-		<?php endif ?>
+	<?php endif ?>
+</div>
+<?php echo js('jquery'), js('stupidtable') ?>
+<script>
+	jQuery(function($) {
+		$('a.delete').click(function(event) {
+			return confirm('Are you sure to delete?');
+		});
+
+		$('table.list').stupidtable().bind('aftertablesort', function (event, data) {
+			var th = $(this).find("th");
+			th.find(".arrow").remove();
+			var arrow = data.direction === "asc" ? "&uarr;" : "&darr;";
+			th.eq(data.column).append('<span class="arrow">' + arrow +'</span>');
+		});
+	});
+</script>

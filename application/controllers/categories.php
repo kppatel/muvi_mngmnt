@@ -7,9 +7,9 @@ class Categories extends CI_Controller {
 	}
 	public function index()
 	{
-		$this->load->view('categories/index', array(
-				'data' => $this->category->getAll()
-			));
+		$this->template->set_layout('default')
+			->title('Movie Management', 'Categories')
+			->build('categories/index', array('data' => $this->category->getAll()));
 	}
 	public function create()
 	{
@@ -19,7 +19,9 @@ class Categories extends CI_Controller {
 		$this->validation->set_rules('name', 'Name', 'required');
 
 		if($this->validation->run()==FALSE) {
-			$this->load->view('categories/create');
+			$this->template->set_layout('default')
+			->title('Movie Management', 'Movies')
+			->build('categories/create');
 		}
 		else {
 			$this->category
@@ -44,7 +46,9 @@ class Categories extends CI_Controller {
 		$this->validation->set_rules('name', 'Name', 'trim|ucfirst|required');
 
 		if ($this->validation->run() == false) {
-			$this->load->view('categories/edit', array('category' => $category));
+			$this->template->set_layout('default')
+			->title('Movie Management', 'Movies')
+			->build('categories/edit', array('category' => $category));
 		} else {
 			$id = $this->input->post('id');
 			$this->category->update($id, array(
@@ -66,6 +70,3 @@ class Categories extends CI_Controller {
 		redirect('categories/index');
 	}
 }
-
-/* End of file welcome.php */
-/* Location: ./application/controllers/welcome.php */

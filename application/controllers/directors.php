@@ -7,8 +7,9 @@ class Directors extends CI_Controller {
 	}
 
 	public function index() {
-		$this->load
-						->view('directors/index',array('data' =>  $this->director->getAll()));
+		$this->template->set_layout('default')
+			->title('Movie Management', 'Directors')
+			->build('directors/index',array('data' =>  $this->director->getAll()));
 	}
 
 	public function create() {
@@ -18,7 +19,9 @@ class Directors extends CI_Controller {
 		$this->validation->set_rules('name', 'Name', 'trim|ucfirst|required');
 
 		if ($this->validation->run() == false) {
-			$this->load->view('directors/create');
+			$this->template->set_layout('default')
+			->title('Movie Management', 'Directors')
+			->build('directors/create');
 		}
 		else {
 			var_dump($this->input->post('name'));
@@ -45,7 +48,9 @@ class Directors extends CI_Controller {
 		$this->validation->set_rules('name', 'Name', 'trim|ucfirst|required');
 
 		if ($this->validation->run() == false) {
-			$this->load->view('directors/edit', array('director' => $director));
+			$this->template->set_layout('default')
+			->title('Movie Management', 'Directors')
+			->build('directors/edit', array('director' => $director));
 		} else {
 			$id = $this->input->post('id');
 			$this->director->update($id, array(

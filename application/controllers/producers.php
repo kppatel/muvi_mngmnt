@@ -8,10 +8,9 @@ class Producers extends CI_Controller {
 
 	public function index()
 	{
-		$this->load
-				 ->view('producers/index', array(
-						'data' =>$this->producer->getAll()
-						));
+		$this->template->set_layout('default')
+			->title('Movie Management', 'Producers')
+			->build('producers/index', array('data' =>$this->producer->getAll()));
 	}
 
 	public function create()
@@ -22,7 +21,9 @@ class Producers extends CI_Controller {
 		$this->validation->set_rules('name', 'Name', 'trim|ucfirst|required');
 
 		if ($this->validation->run() == false) {
-			$this->load->view('producers/create');
+			$this->template->set_layout('default')
+			->title('Movie Management', 'Producers')
+			->build('producers/create');
 		}
 		else {
 			var_dump($this->input->post('name'));
@@ -49,7 +50,9 @@ class Producers extends CI_Controller {
 		$this->validation->set_rules('name', 'Name', 'trim|ucfirst|required');
 
 		if ($this->validation->run() == false) {
-			$this->load->view('producers/edit', array('producer' => $producer));
+			$this->template->set_layout('default')
+			->title('Movie Management', 'Producers')
+			->build('producers/edit', array('producer' => $producer));
 		} else {
 			$id = $this->input->post('id');
 			$this->producer->update($id, array(

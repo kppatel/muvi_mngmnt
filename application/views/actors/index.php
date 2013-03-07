@@ -1,10 +1,11 @@
 <div class="container">
-	<h1>Producers</h1>
-	<?php echo anchor('producers/create', 'Create'); ?>
+	<h1>Actors</h1>
+	<?php echo anchor('actors/create', 'Create'); ?>
 	<?php if (!empty($data)): ?>
 		<table class="list">
 			<thead>
 			<th data-sort="string">Name</th>
+			<th data-sort="string">Gender</th>
 			<th colspan="2">Actions</th>
 			</thead>
 
@@ -12,8 +13,9 @@
 				<?php foreach ($data as $r): ?>
 					<tr>
 						<td><?php echo $r['name'] ?></td>
-						<td align="center"><?php echo anchor('producers/edit/' . $r['id'], 'Edit') ?></td>
-						<td align="center"><?php echo anchor('producers/delete/' . $r['id'], 'Delete', array('class' => 'delete')) ?></td>
+						<td><?php echo $r['gender'] ?></td>
+						<td align="center"><?php echo anchor('actors/edit/' . $r['id'], 'Edit') ?></td>
+						<td align="center"><?php echo anchor('actors/delete/' . $r['id'], 'Delete', array('class' => 'delete')) ?></td>
 					</tr>
 				<?php endforeach ?>
 			</tbody>
@@ -21,7 +23,7 @@
 	<?php else: ?>
 		<p>No records found.</p>
 	<?php endif ?>
-</div
+</div>
 <?php echo js('jquery'), js('stupidtable') ?>
 <script>
 	jQuery(function($) {
